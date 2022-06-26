@@ -1,0 +1,18 @@
+<div *ngIf="result != null">
+    <div *ngFor="let letter of result.answers" class="result-item" [@enter]>
+        <div [className]="letter.correct?'alert alert-success':'alert alert-danger'">
+            <div class="info">
+                <div class="info-bar">
+                    <div>{{letter.word}}</div>
+                    <span> — </span>
+                    <div>{{letter.translate}}</div>
+                    <!-- <input placeholder="translate" [(ngModel)]="letter.translate" /> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <button (click)="again()" class="btn btn-dark">Try again</button>
+        <button (click)="goToDict()" class="btn btn-info">Edit woordbooks</button>
+    </div>
+</div>

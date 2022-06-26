@@ -1,0 +1,13 @@
+.login-form {
+    padding-top: 5rem;
+    // margin-left: auto;
+    // margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    // width: 70%;
+    align-items: center;
+    gap: 1rem;
+    input {
+        width: 300px;
+    }
+}

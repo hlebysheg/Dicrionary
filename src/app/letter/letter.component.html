@@ -1,0 +1,47 @@
+<!-- option -->
+<div class="flex">
+    <div class="option-bar container option">
+        <div class="input-group mb-3">
+            <button class="btn btn-outline-secondary" type="button" (click)="open()">add</button>
+            <input type="text" class="form-control" placeholder="find letter" [(ngModel)]="findEl" />
+        </div>
+    </div>
+
+    <!-- main -->
+    <div *ngIf="!isLoading">
+        <div class="main">
+            <div *ngFor="let letter of letters | SearchLetterPipe: findEl" class="item" [@openClose]>
+                <div class="p-3 border bg-light  move">
+                    <div class="info" (dblclick)="edit(letter.id, letter.word, letter.translate, letter.anotation)">
+                        <div class="translate-bar">
+                            <span>{{letter.word}}</span>
+                            <span> {{letter.anotation? '(' + letter.anotation + ')': ''}}</span>
+                            <span> — {{letter.translate}}</span>
+                        </div>
+                        <div class="button-bar">
+                            <div (click)="edit(letter.id, letter.word, letter.translate, letter.anotation)"><img src="../../assets/svgIcons/pencil-solid.svg"></div>
+                            <div (click)="del(letter.id)"><img src="../../assets/svgIcons/xmark-solid.svg"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div (click)="open()" class="add">
+                <img src="../../assets/svgIcons/plus-solid.svg" />
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isLoading" class="main">
+        <app-loader></app-loader>
+    </div>
+</div>
+<!-- <form [formGroup]="letterForm" (ngSubmit)="create()" class="form">
+    <div class="row fast-input position-fixed">
+        <div class="col">
+            <input type="text" formControlName="word" class="form-control" placeholder="word" />
+        </div>
+        <div class="col">
+            <input type="text" formControlName="translate" class="form-control" placeholder="translate" />
+        </div>
+        <button type="button" class="">Block level button</button>
+    </div>
+</form> -->

@@ -1,0 +1,42 @@
+<!-- option bar -->
+
+<!-- <div class="option-bar container">
+    <div class="input-group mb-2">
+        <button class="btn btn-outline-secondary" type="button" (click)="open()">add dictionary</button>
+        <input type="text" class="form-control" placeholder="find dictionary" [(ngModel)]="findText">
+    </div>
+</div> -->
+<!-- info bar -->
+<div class="dict-menu">
+    <div *ngIf="!isLoading" class="dicts">
+
+        <div class="option-bar container option">
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button" (click)="open()">add</button>
+                <input type="text" class="form-control" placeholder="find woordBooks" [(ngModel)]="findText" />
+            </div>
+        </div>
+        <div *ngFor="let book of woordBooks |  SearchLetterPipe: findText" [@openClose]>
+
+            <div class="p-3 border bg-light" [ngClass]="activeId === book.id?'active':''" (click)="letterNavigate(book.id)">
+                <div class="info" (dblclick)="edit(book.language, book.title, book.author, book.id)">
+                    <span>{{book.language}}</span>
+                    <span>{{book.title}}</span>
+                    <div (click)="del(book.id)"><img src="../../assets/svgIcons/cross-svgrepo-com.svg"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="isLoading">
+        <app-loader></app-loader>
+    </div>
+    <div class="letter">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+<!-- modal page -->
+
+<!-- Modal -->

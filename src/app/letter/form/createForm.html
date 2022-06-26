@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <h4 class="modal-title">Create dictionary</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="letterForm" (ngSubmit)="sub()">
+        <label>word</label><input type="text" formControlName="word" class="form-control" />
+        <label>translate</label><input type="text" formControlName="translate" class="form-control" />
+        <label>anotation</label><input type="text" formControlName="anotation" class="form-control" />
+        <button [disabled]="letterForm.invalid" class="btn btn-outline-secondary">{{subName}}</button>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

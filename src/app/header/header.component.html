@@ -1,0 +1,14 @@
+<header>
+    <nav>
+        <a routerLink="/my-woordbook" routerLinkActive="active">My dictionary</a>
+        <a routerLink="/test" routerLinkActive="active">test</a>
+    </nav>
+    <div class="loginbar">
+        <div *ngIf="name.length>0">
+            <span>{{name}}</span>
+            <span (click)="out()">logout</span>
+        </div>
+        <a *ngIf="name.length==0" routerLink="/login" routerLinkActive="active">login</a>
+        <a *ngIf="name.length==0" routerLink="/register" routerLinkActive="active">register</a>
+    </div>
+</header>

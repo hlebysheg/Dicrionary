@@ -1,0 +1,29 @@
+<form [formGroup]="loginForm" (ngSubmit)="sub()" class="login-form">
+    <div>
+        <input type="text" formControlName="email" class="form-control" placeholder="email" maxlength="20" />
+        <label *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched else email" class="form-text">enter correct email</label>
+        <ng-template #email>
+            <label class="form-text">enter your email</label>
+        </ng-template>
+    </div>
+    <div>
+        <input type="text" formControlName="name" class="form-control" placeholder="name" maxlength="20" />
+        <label *ngIf="loginForm.controls['name'].invalid && loginForm.controls['name'].touched else name" class="form-text">
+            Your name must be 2-15 characters long
+        </label>
+        <ng-template #name>
+            <label class="form-text">enter your name</label>
+        </ng-template>
+    </div>
+    <div>
+        <input type="text" formControlName="password" class="form-control" type="password" placeholder="password" maxlength="20" />
+        <label *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched else password" class="form-text">
+            Your password must be 6-15 characters long
+        </label>
+        <ng-template #password>
+            <label class="form-text">enter your password</label>
+        </ng-template>
+    </div>
+    <button [disabled]="loginForm.invalid" class="btn btn-primary">{{subName}}</button>
+    <div>{{msg}}</div>
+</form>

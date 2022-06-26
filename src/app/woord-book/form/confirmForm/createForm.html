@@ -1,0 +1,10 @@
+<div class="modal-header">
+    <h4 class="modal-title">Create dictionary</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+
+<div class="modal-footer">
+    <button [disabled]="" class="btn btn-danger" (click)="sub(true)">delete</button>
+    <button [disabled]="" class="btn btn-outline-secondary" (click)="sub(false)">dont delete</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>
