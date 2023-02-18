@@ -2,6 +2,12 @@
     width: 65%;
     margin-left: auto;
     margin-right: auto;
+    .timer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+    }
     // background-color: rgb(240, 240, 240);
     .test {
         padding-bottom: 1rem;

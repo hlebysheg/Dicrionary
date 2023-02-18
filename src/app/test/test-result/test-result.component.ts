@@ -24,20 +24,22 @@ export class TestResultComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.testSerice.resetResult()
     this?.sub?.unsubscribe()
     this.sub = null
-    this.testSerice.resetResult()
   }
 
   ngOnInit(): void {
-    
+    //console.log('he')
   }
 
   again(){
+    this.testSerice.resetResult()
     this.testSerice.tryAgain()
     this.router.navigateByUrl('/test')
   }
   goToDict(){
+    this.testSerice.resetResult()
     this.router.navigateByUrl('/my-woordbook')
   }
 

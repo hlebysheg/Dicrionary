@@ -19,7 +19,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    
   }
 
   ngOnDestroy(): void {
@@ -31,8 +30,4 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.login.logOut()
     this.route.navigateByUrl('/login')
   }
-  
-
-  
-
 }

@@ -25,5 +25,6 @@ import { woordBookService } from "../../service/woordBook.service";
         this.activeModal.close()
       }
       this.isSucces.emit(isDel)
+      this.activeModal.close()
     }
   }

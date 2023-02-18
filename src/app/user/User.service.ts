@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 
 
 @Injectable({ providedIn: 'root' })
@@ -25,7 +25,6 @@ export class UserService {
         this._token.next(authToken)
         this._name.next(authName)
         this._isLogin.next(true)
-        
     }
     
     out(){
@@ -44,6 +43,10 @@ export class UserService {
 
     isAuth(): boolean{
         return this._isLogin.value
+    }
+
+    isLogin(): Observable<boolean> {
+        return this.isLogin$
     }
     
 }

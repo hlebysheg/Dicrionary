@@ -16,12 +16,19 @@ export class TestComponent implements OnInit, OnDestroy {
   sub: Subscription | null = null
   test: IresponseTest | null = null
   isLoading: boolean = false
-  questions: Array<boolean> | undefined
+  questions: Array<boolean> | null = null//question type about word or translate
   msg: string = ''
 
   constructor(private testSerice: testService, private router: Router) {
+
     this.sub = testSerice.test$.subscribe(el => {
+      
       this.test = el
+
+      if(this.test?.letterResponses === undefined){
+        return
+      }
+
       this.questions = this.test?.letterResponses?.map(el => {
         if(el.translate === ''){
           return true
@@ -36,9 +43,9 @@ export class TestComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void {
+    this.testSerice.resetTest()
     this.sub?.unsubscribe()
     this.sub = null
-    this.testSerice.resetTest()
   }
 
   ngOnInit(): void {
@@ -52,12 +59,13 @@ export class TestComponent implements OnInit, OnDestroy {
       this.msg = 'enter all answers'
       return
     }
-    
     this.isLoading = true
-
+    
     if(this.test != null){
+      
       this.testSerice.finishTest(this.test).subscribe(el => {
         // this.result = el
+        //debugger
         this.isLoading = false
         this.router.navigateByUrl('/results')
       })
@@ -79,5 +87,9 @@ export class TestComponent implements OnInit, OnDestroy {
     }
 
     return true
+  }
+
+  timerStop() {
+    this.msg = 'time is out, but u can continue'
   }
 }

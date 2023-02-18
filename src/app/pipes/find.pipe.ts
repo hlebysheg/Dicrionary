@@ -6,17 +6,18 @@ import { Iletter } from '../letter/letter.interfare';
     name: 'SearchLetterPipe'
 })
 export class SearchLetterPipe implements PipeTransform {
-    transform(value: Array<Iletter> | null | Array<IWoordBook>, args?: string): any {
+    transform(value: Array<Iletter> | null | Array<IWoordBook> | undefined, args?: string): any {
 
-        if(!value || value === null)return null;
+        if(!value || value === null || value === undefined)return null;
         if(!args || args === undefined)return value;
-
+        if(value.length === 0) return value
+        
         let letter = value as Array<Iletter>
         let dicts = value as Array<IWoordBook>
         // args = args.toLowerCase();
         
-        if(letter[0].word){
-            return letter.filter((el) => {
+        if(letter![0].word != undefined){
+            return letter!.filter((el) => {
                 if(el != undefined && el.word != undefined){
     
                     let inWord = el.word.toLowerCase().includes(String(args).toLowerCase())
@@ -29,8 +30,8 @@ export class SearchLetterPipe implements PipeTransform {
             });
         }
 
-        if(dicts[0].author){
-            return dicts.filter((el)=> {
+        if(dicts![0].author != undefined){
+            return dicts!.filter((el)=> {
                 if(el != undefined && el.title != undefined){
                     let inLanguage = el.language.toLowerCase().includes(String(args).toLowerCase())
                     let inTitle = el.title.toLowerCase().includes(String(args).toLowerCase())

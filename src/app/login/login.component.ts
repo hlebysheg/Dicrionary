@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit, OnDestroy{
       Validators.required,
       Validators.email,
       Validators.minLength(6),
-      Validators.maxLength(15)
+      Validators.maxLength(30)
     ]),
     "name": new FormControl("",[
       Validators.required,
@@ -99,7 +99,7 @@ export class LoginComponent implements OnInit, OnDestroy{
 
     let len = control.value.toString().length
 
-    if(len < 4 && len >20){
+    if(len < 4 && len >30){
       return {"length": true}
     }
 

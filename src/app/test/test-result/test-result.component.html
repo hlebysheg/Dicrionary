@@ -1,5 +1,5 @@
 <div *ngIf="result != null">
-    <div *ngFor="let letter of result.answers" class="result-item" [@enter]>
+    <div *ngFor="let letter of result.answer" class="result-item" [@enter]>
         <div [className]="letter.correct?'alert alert-success':'alert alert-danger'">
             <div class="info">
                 <div class="info-bar">
@@ -10,6 +10,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="text-center">
+        {{result.creationTime}} {{result.finalTime}} {{result.score}}
     </div>
     <div class="text-center">
         <button (click)="again()" class="btn btn-dark">Try again</button>

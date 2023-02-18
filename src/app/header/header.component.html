@@ -1,14 +1,18 @@
 <header>
     <nav>
-        <a routerLink="/my-woordbook" routerLinkActive="active">My dictionary</a>
-        <a routerLink="/test" routerLinkActive="active">test</a>
+        <a routerLink="/my-woordbook" class="nav-link" routerLinkActive="active">My dictionary</a>
+        <a routerLink="/test" class="nav-link" routerLinkActive="active">test</a>
     </nav>
     <div class="loginbar">
         <div *ngIf="name.length>0">
             <span>{{name}}</span>
-            <span (click)="out()">logout</span>
+            <span (click)="out()"><span></span><img src='../../assets/svgIcons/exit-svgrepo-com.svg' class="icon" /></span>
         </div>
-        <a *ngIf="name.length==0" routerLink="/login" routerLinkActive="active">login</a>
-        <a *ngIf="name.length==0" routerLink="/register" routerLinkActive="active">register</a>
+        <!-- добавить смайл -->
+        <nav>
+            <a *ngIf="name.length==0" class="nav-link" routerLink="/login" routerLinkActive="active">login</a>
+            <a *ngIf="name.length==0" class="nav-link" routerLink="/register" routerLinkActive="active">register</a>
+        </nav>
+
     </div>
 </header>

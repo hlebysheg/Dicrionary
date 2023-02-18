@@ -41,20 +41,20 @@ enum Score{
 //test
 export interface ITest {
     id: number
-    CreationTime: Date
-    FinalTime: Date
-    Score: Score
-    TestToLetters: null
+    creationTime: Date
+    finalTime: Date
+    score: Score
+    testToLetters: null
+    answer: Array<IAnswer>
 }
 
 export interface IAnswer{
     id: number
     word: number
     translate: number
-    correct: number
+    correct: boolean | null
 }
 
-export interface ITestResult{
-    test: ITest
-    answers: Array<IAnswer>
+export interface ITestResult extends ITest{
+    
 }

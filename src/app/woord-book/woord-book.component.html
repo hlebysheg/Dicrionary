@@ -16,17 +16,21 @@
                 <input type="text" class="form-control" placeholder="find woordBooks" [(ngModel)]="findText" />
             </div>
         </div>
-        <div *ngFor="let book of woordBooks |  SearchLetterPipe: findText" [@openClose]>
+        <div>
+            <div *ngFor="let book of woordBooks |  SearchLetterPipe: findText" [@openClose]>
 
-            <div class="p-3 border bg-light" [ngClass]="activeId === book.id?'active':''" (click)="letterNavigate(book.id)">
-                <div class="info" (dblclick)="edit(book.language, book.title, book.author, book.id)">
-                    <span>{{book.language}}</span>
-                    <span>{{book.title}}</span>
-                    <div (click)="del(book.id)"><img src="../../assets/svgIcons/cross-svgrepo-com.svg"></div>
+                <div class="p-3 border bg-light" [ngClass]="activeId === book.id?'active':''" (click)="letterNavigate(book.id)">
+                    <div class="info" (dblclick)="edit(book.language, book.title, book.author, book.id)">
+                        <span name="language" id="3">{{book.language}}</span>
+                        <span name="title">{{book.title}}</span>
+                        <div (click)="del(book.id)" *ngIf="!(activeId === book.id)"><img src="../../assets/svgIcons/cross-svgrepo-com.svg"></div>
+                    </div>
                 </div>
-            </div>
 
+            </div>
+            <app-brn-cross (click)="open()"></app-brn-cross>
         </div>
+
     </div>
 
     <div *ngIf="isLoading">

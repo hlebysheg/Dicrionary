@@ -25,9 +25,10 @@
                     </div>
                 </div>
             </div>
-            <div (click)="open()" class="add">
+            <!-- <div (click)="open()" class="add">
                 <img src="../../assets/svgIcons/plus-solid.svg" />
-            </div>
+            </div> -->
+            <app-brn-cross (click)="open()"></app-brn-cross>
         </div>
     </div>
     <div *ngIf="isLoading" class="main">

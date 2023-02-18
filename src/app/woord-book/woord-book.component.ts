@@ -21,8 +21,8 @@ export class WoordBookComponent implements OnInit, OnDestroy{
 
   private subDict: Subscription | null = null
   private subDelete: Subscription | null = null
-  private activeSub: Subscription | null = null
-  private isLoginSub: Subscription | null = null
+  private activeSub: Subscription | null | undefined = null
+  isLoginSub: Subscription | null = null
   woordBooks: Array<IWoordBook> | null = null
   isLoading = false
   msg = ''
@@ -36,7 +36,7 @@ export class WoordBookComponent implements OnInit, OnDestroy{
               private route: ActivatedRoute, 
               private user: UserService) {
 
-    this.isLoginSub = this.user.isLogin$.subscribe(el=>{
+    this.isLoginSub = this.user?.isLogin()?.subscribe(el=>{
       if(el === false){
         this.router.navigateByUrl('/login')
       }
@@ -49,18 +49,9 @@ export class WoordBookComponent implements OnInit, OnDestroy{
 
   }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void { 
     this.woordbookGet()
-    
-    this.activeSub = this.route.children[0]?.paramMap.pipe(
-      switchMap(params => {
-        return params.getAll('id')
-      })
-    )
-    .subscribe(data=> {
-      this.activeId = +data
-    })
+    this.activeSub = this.route?.firstChild?.data?.subscribe(data => {this.activeId = +data})
   }
 
   ngOnDestroy(): void {

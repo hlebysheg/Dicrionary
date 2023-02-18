@@ -24,6 +24,8 @@ import { TestComponent } from './test/test.component';
 import { NgbdModalContent } from './woord-book/form/createPutForm/createForm';
 import { TestResultComponent } from './test/test-result/test-result.component';
 import { ResultGuard } from './routs/guard/result.guard';
+import { TimerComponent } from './timer/timer.component';
+import { BrnCrossComponent } from './common component/brn-cross/brn-cross.component';
 
 
 
@@ -55,7 +57,7 @@ const routes: Routes = [
   {
     path: 'results',
     component: TestResultComponent,
-    canActivate: [ResultGuard, AuthGuard]//ResultGuard
+    canActivate: [AuthGuard]//ResultGuard
   }
 ];
 
@@ -71,7 +73,9 @@ const routes: Routes = [
     NgbdModalLetter,
     SearchLetterPipe,
     TestComponent,
-    TestResultComponent
+    TestResultComponent,
+    TimerComponent,
+    BrnCrossComponent
   ],
   imports: [
     BrowserModule,

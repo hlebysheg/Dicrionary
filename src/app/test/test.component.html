@@ -1,12 +1,16 @@
 <div *ngIf="test != null && questions != undefined" class="test-block">
+    <div class="timer">
+        <!-- test.letterResponses.length * 20 * 1000 -->
+        <app-timer [endTime]="test.letterResponses.length * 20 * 1000" (timerStop)="timerStop()"></app-timer>
+    </div>
     <div *ngFor="let letter of test.letterResponses; index as i" class="test" [@enter]>
         <div class="p-3 border bg-light">
             <div class="info">
                 <div class="translate-bar">
                     <!-- <div *ngIf="letter.word">{{letter.word}}</div> -->
-                    <input placeholder="word" [(ngModel)]="letter.word" class="form-control" [disabled]="questions[i]" />
+                    <input id="word" name="word" placeholder="word" [(ngModel)]="letter.word" class="form-control" [disabled]="questions[i]" />
                     <span> — </span>
-                    <input placeholder="translate" [(ngModel)]="letter.translate" class="form-control" [disabled]="!questions[i]" />
+                    <input id="translate" name="translate" placeholder="translate" [(ngModel)]="letter.translate" class="form-control" [disabled]="!questions[i]" />
                 </div>
             </div>
         </div>
